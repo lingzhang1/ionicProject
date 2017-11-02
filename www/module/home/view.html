@@ -1,0 +1,134 @@
+<ion-view id="home" view-title="首页" >
+
+    <!--头部搜索栏-->
+    <div id="headerBar" class="headerBar">
+      <!-- 用这个div来控制透明度 -->
+      <div id="headerBar-bg"></div>
+      <div class="headerBar-logo">
+        <i></i>
+      </div>
+      <a class="headerBar-search"  ng-href="#">
+        <span></span>
+        <div>
+          <input  maxlength="20" autocomplete="true" value="美妆1元起 独家放价"/>
+        </div>
+      </a>
+      <a class="headerBar-login" ui-sref='tabs.login'>
+          <span>
+              登录
+          </span>
+      </a>
+    </div>
+
+
+  <!-- lazy-scroll图片懒加载 -->
+  <ion-content id="home-content" scroll="false" lazy-scroll>
+      <!--头部轮播图-->
+      <div class="headerSlider">
+        <div id="headerSlider" class="swiper-container">
+          <div class="swiper-wrapper">
+            <!-- goodList获取商品详情 -->
+            <!-- ui-sref路由变量，typeNumber为传递的参数 -->
+            <div class="swiper-slide" ng-repeat="item in headerSlideData"
+            ui-sref="details({typeNumber:{{item.typeNumber}}})">
+              <!-- 图片懒加载 -->
+              <img alt="{{item.alt}}" ng-src=
+              "{{item.src}}">
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+        </div>
+      </div>
+         <!-- 秒杀 -->
+      <div id="centent">
+        <div class="centent-top">
+          <span></span>
+          <h2>掌上秒杀</h2>
+          <div class="centent-time">
+            <span class="time-text">{{hour.A}}</span>
+            <span class="time-text">{{hour.B}}</span>
+            <span>:</span>
+            <span class="time-text">{{minute.A}}</span>
+            <span class="time-text">{{minute.B}}</span>
+            <span>:</span>
+            <span class="time-text">{{second.A}}</span>
+            <span class="time-text">{{second.B}}</span>
+          </div>
+        </div>
+        <ul class="centent-bottom">
+          <li ng-repeat="item in miaoshaData"
+            ui-sref="details({typeNumber:{{item.typeNumber}}})">
+              <img alt="{{item.alt}}" ng-src=
+              "{{item.src}}">
+            <span class="seckill-now">{{item.nowPay}}</span>
+            <span class="seckill-old">{{item.oldPay}}</span>
+          </li>
+        </ul>
+      </div>
+      <!--头条-->
+      <div class="toutiao" class="floor">
+        <div class="floor-title"">爱伦头条</div>
+        <div id="toutiaoSlider" class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">兰博丹尼 可爱零钱包 55</div>
+            <div class="swiper-slide">桂格即食燕麦片超值装1478g</div>
+            <div class="swiper-slide">维达 卫生纸 140g卷纸*10卷</div>
+          </div>
+        </div>
+      </div>
+      <!--广告1-->
+      <div class="ad">
+        <ion-slide-box show-pager="true" auto-play="true" does-continue="true">
+          <ion-slide ng-repeat="item in advertisementData"
+            ui-sref="details({typeNumber:{{item.typeNumber}}})">
+              <!-- 图片懒加载 -->
+              <img alt="{{item.alt}}" ng-src=
+              "{{item.src}}"
+              image-lazy-src="{{item.src}}"
+              image-lazy-loader="lines">
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <!--主题街-->
+      <div id="floor-1" class="floor">
+        <div class="floor-title">主题街</div>
+        <div class="floor-product">
+          <div class="floor-product-list floor-left">
+            <img alt="{{streatData[1].alt}}" ng-src=
+              "{{streatData[1].src}}"
+              image-lazy-src="{{streatData[1].src}}"
+              image-lazy-loader="lines" ui-sref="details({typeNumber:{{streatData[1].typeNumber}}})">
+          </div>
+          <div class="floor-product-list">
+            <img alt="{{streatData[2].alt}}" ng-src=
+              "{{streatData[2].src}}"
+              image-lazy-src="{{streatData[2].src}}"
+              image-lazy-loader="lines" ui-sref="details({typeNumber:{{streatData[2].typeNumber}}})">
+            <img alt="{{streatData[3].alt}}" ng-src=
+              "{{streatData[3].src}}"
+              image-lazy-src="{{streatData[3].src}}"
+              image-lazy-loader="lines" ui-sref="details({typeNumber:{{streatData[3].typeNumber}}})">
+          </div>
+        </div>
+      </div>
+
+      <!--广告2-->
+      <div class="ad" style="clear: both">
+        <ion-slide-box show-pager="true" auto-play="true" does-continue="true">
+          <ion-slide ng-repeat="item in advertisementData2"
+            ui-sref="details({typeNumber:{{item.typeNumber}}})">
+              <!-- 图片懒加载 -->
+              <img alt="{{item.alt}}" ng-src=
+              "{{item.src}}"
+              image-lazy-src="{{item.src}}"
+              image-lazy-loader="lines">
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <!-- 产品展示 -->
+
+
+      <!--回到顶部的区块-->
+      <div class="back_top"></div>
+  </ion-content>
+</ion-view>

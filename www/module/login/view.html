@@ -1,0 +1,51 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-primary" style='width:600px;margin:100px auto;'>
+          <div class="panel-heading">用户登录</div>
+          <div class="panel-body">
+          <form class="form-horizontal" action="/account/login" method="post">
+            <div class="form-group">
+              <label for="uname" class="col-sm-2 control-label" >用户名</label>
+              <div class="col-sm-10" style="display: inline-block;">
+                <input type="text" class="form-control" id="uname" name='uname' placeholder="邮箱/手机号">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="upsw" class="col-sm-2 control-label" >密码</label>
+              <div class="col-sm-10" style="display: inline-block;">
+                <input type="password" class="form-control" id="upsw" name='upsw' placeholder="密码">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="ucode" class="col-sm-2 control-label" >验证码</label>
+              <div class="col-sm-7" style="display: inline-block;">
+                <input type="text" class="form-control" id="ucode" name='ucode' placeholder="验证码">
+              </div>
+              <div class="col-sm-3" style="display: inline-block;">
+                 <!-- 验证码图片 -->
+                 <img class="ucodeImg" src="/account/ucode" style="cursor: pointer;">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-2 col-sm-10">
+                <button type="submit" class="btn btn-default" ui-sref='tabs.account'>登录</button>
+                <a href="/account/register" class="btn btn-default" ui-sref='tabs.register'>注册</a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+  $(function(){
+    // 给ucodeImg设置点击事件，点击切换图片
+    $('.ucodeImg').click(function(){
+      //每次请求图片都给图片路径设置随机参数，防止浏览器缓存
+      //设置路由参数，不会影响route.get('/ucode',accountCtroller.getUcode);的路由访问
+      let src='/account/ucode?uid='+Math.random();
+      $('.ucodeImg').attr('src',src);
+    });
+  });
+</script>
